@@ -27,6 +27,31 @@
 
 </div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Receipe Nmae</th>
+      <th scope="col">Receipe Description</th>
+      <th scope="col">Receipe Image</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for receipe in receips %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>  <!--forloop.counter used for S.N in Table-->
+      <td>{{receipe.receipe_name}}</td>
+      <td>{{receipe.receipe_description}}</td>
+      <td>{{receipe.receipe_image}}</td>
+    </tr>
+
+    {% endfor %}
+
+    
+  </tbody>
+</table>
+
 
 
 
