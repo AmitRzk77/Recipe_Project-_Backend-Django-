@@ -22,7 +22,15 @@ def receipes(request):
 
         )
         #this will avoid reloading page after one submission
-        #return redirect('/receipes/')
+        return redirect('/')
+    
+
+    
+      #Set View of data
+    queryset = Receipe.objects.all()
+    context = {'receips': queryset}
+    
+    
 
 
 
@@ -34,4 +42,4 @@ def receipes(request):
 
 
 
-    return render(request, "receips.html")
+    return render(request, "receips.html", context)
