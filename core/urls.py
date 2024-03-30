@@ -17,8 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from vege.views import*
+from django.conf.urls.static import static    #FOR MEDIA FILES
+from django.conf import settings                          #FOR MEDIA FILES
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # thi is for media files
 
 urlpatterns = [
     path('' , receipes, name = "receipes"),
+    path('delete_receipe/<id>/', delete_receipe , name = "delete_receipe"),     #<id>/ is dynamic route for dynamic id
+    path('update_receipe/<id>/', update_receipe , name = "update_receipe"),     #<id>/ is dynamic route for dynamic id
     path('admin/', admin.site.urls),
 ]
+
+
+#all for media-files
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root = settings.MEDIA_ROOT)
+
+
+
+urlpatterns += staticfiles_urlpatterns()
