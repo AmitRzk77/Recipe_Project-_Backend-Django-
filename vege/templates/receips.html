@@ -3,13 +3,13 @@
 
 <div class = "container" mt-5>
 
-    <form class = "col-6 mx-auto my-5 card p-3 shadow-lg color-brown" method = "post" enctype="multipart/form-data">
+    <form class = "col-6 mx-auto my-5 card p-3 shadow-lg color-brown" method = "post" enctype="multipart/form-data">  <!--enctype for file-->
         {% csrf_token %}
         <h1>Add Receipe</h1>
         <hr>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
-          <input name="receipe_name" required type="text" class="form-control" >
+          <input name="receipe_name" required type="text" class="form-control" >           <!--required for avoid blank -->
          
         </div>
         <div class="mb-3">
@@ -24,8 +24,25 @@
         <button type="submit" class="btn btn-success">Add Receipe</button>
       </form>
 
+      <form>
+
+        <hr>
+
+      <div class = "mt-5">
+        <div class = "mx-auto col-6">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Search Food</label>
+            <input name="search"   type="text" class="form-control" >           <!--required for avoid blank -->
+           
+          </div>
+          <button type = "submit"  class = "btn btn-primary">Search</button>
+
+        </div>
+      </div>
+
 
 </div>
+</form>
 
 <table class="table">
   <thead>
@@ -34,6 +51,7 @@
       <th scope="col">Receipe Nmae</th>
       <th scope="col">Receipe Description</th>
       <th scope="col">Receipe Image</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 
@@ -43,7 +61,17 @@
       <th scope="row">{{forloop.counter}}</th>  <!--forloop.counter used for S.N in Table-->
       <td>{{receipe.receipe_name}}</td>
       <td>{{receipe.receipe_description}}</td>
-      <td>{{receipe.receipe_image}}</td>
+      <td>
+        <img src = "/media/{{receipe.receipe_image}}" style = "height: 100PX;"></td>
+        <td>
+
+
+      <a href="/delete_receipe/{{receipe.id}}" class= "btn btn-danger">Delete</a>    <!--delete button-->
+    
+
+      <a href="/update_receipe/{{receipe.id}}" class= "btn btn-success m-3" m-3>Update</a>    <!--delete button-->
+
+      </td>
     </tr>
 
     {% endfor %}
