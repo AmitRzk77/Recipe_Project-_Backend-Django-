@@ -71,6 +71,6 @@ def update_receipe(request, id):
 
 #this is for delete id , setting id for items and delete
 def delete_receipe(request, id):
-    queryset = Receipe.objects.get(id = id),
+    queryset = Receipe.objects.get(id = id)
     queryset.delete()
     return redirect ('/')
